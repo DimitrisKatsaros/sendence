@@ -42,3 +42,8 @@ Thumbs.db
 .angular
 
 error.log
+
+.env
+
+# Exclude project README from git
+README.md
