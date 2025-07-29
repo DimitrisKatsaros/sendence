@@ -19,8 +19,16 @@
     "lint:fix:be": "npx nx lint sendence-backend -- --fix",
     "lint:fix:fe": "npx nx lint sendence-frontend -- --fix",
     "format": "npx nx format:write --projects=sendence-backend,sendence-frontend --parallel",
+    "format:check": "npx nx format:check --base=origin/main",
     "format:be": "npx nx format:write --projects=sendence-backend",
-    "format:fe": "npx nx format:write --projects=sendence-frontend"
+    "format:fe": "npx nx format:write --projects=sendence-frontend",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -78,16 +86,18 @@
     "@types/node": "18.16.9",
     "@typescript-eslint/utils": "^8.29.0",
     "angular-eslint": "^20.0.0",
-    "eslint": "^9.8.0",
+    "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-playwright": "^1.6.2",
+    "husky": "^8.0.0",
     "jest": "^30.0.2",
     "jest-environment-jsdom": "^30.0.2",
     "jest-environment-node": "^30.0.2",
     "jest-preset-angular": "~15.0.0",
     "jest-util": "^30.0.2",
+    "lint-staged": "^16.1.2",
     "nx": "21.3.7",
-    "prettier": "^2.6.2",
+    "prettier": "^2.8.8",
     "ts-jest": "^29.4.0",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
