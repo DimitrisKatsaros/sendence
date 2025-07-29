@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MessagesModule } from './messages/messages-module';
+import { MessageEntity } from './messages/entities/message.entity';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { MessagesModule } from './messages/messages-module';
         username: config.get('DB_USER'),
         password: config.get('DB_USER_PASSWORD'),
         database: config.get('DB_NAME'),
-        entities: [__dirname + '/messages/entities/*.entity{.ts,.js}'],
+        entities: [MessageEntity],
         synchronize: true, //TODO: set to false in production
       }),
       inject: [ConfigService],
