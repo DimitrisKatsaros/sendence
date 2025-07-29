@@ -3,9 +3,19 @@ import { Socket } from 'socket.io';
 
 @Catch()
 export class GatewayExceptionFilter implements WsExceptionFilter {
-  catch(exception: any, host: ArgumentsHost) {
+  catch(exception: unknown, host: ArgumentsHost) {
     const client = host.switchToWs().getClient<Socket>();
-    const errorMessage = (exception as any).message || 'Validation error';
+    let errorMessage = 'Validation error';
+
+    if (
+      typeof exception === 'object' &&
+      exception !== null &&
+      'message' in exception
+    ) {
+      errorMessage =
+        (exception as { message?: string }).message || errorMessage;
+    }
+
     client.emit('gatewayError', { error: errorMessage });
   }
 }
