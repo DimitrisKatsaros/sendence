@@ -19,6 +19,7 @@
     "lint:fix:be": "npx nx lint sendence-backend -- --fix",
     "lint:fix:fe": "npx nx lint sendence-frontend -- --fix",
     "format": "npx nx format:write --projects=sendence-backend,sendence-frontend --parallel",
+    "format:check": "npx nx format:check --base=origin/main",
     "format:be": "npx nx format:write --projects=sendence-backend",
     "format:fe": "npx nx format:write --projects=sendence-frontend",
     "prepare": "husky install"

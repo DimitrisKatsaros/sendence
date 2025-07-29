@@ -1,5 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx lint-staged
-# npm test
+
+echo ""
+echo "=============================="
+echo "Running lint-staged and checking formatting..."
+echo "=============================="
+echo ""
+npm run lint || { echo "❌ Lint check failed. Please run 'npm run lint:fix' to auto-fix, or fix errors manually, then re-stage your changes."; exit 1; }
+npm run format:check || { echo "❌ Formatting check failed. Please run 'npm run format' to auto-fix formatting, then re-stage your changes."; exit 1; }
+
