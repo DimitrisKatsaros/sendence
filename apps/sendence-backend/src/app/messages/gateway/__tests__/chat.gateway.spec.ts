@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ChatGateway } from '../chat.gateway';
 import { MessagesService } from '../../services/messages.service';
 import { CreateMessageDto } from '../../dto/create-message.dto';
-import { Socket } from 'socket.io';
+import { Server, Socket } from 'socket.io';
 
 const mockMessagesService = {
   create: jest.fn(),
@@ -45,7 +45,7 @@ describe('ChatGateway', () => {
 
     this.gateway = module.get<ChatGateway>(ChatGateway);
     this.messagesService = module.get(MessagesService);
-    this.gateway['_server'] = mockServer as any;
+    this.gateway['_server'] = mockServer as unknown as Server;
     this.client = { id: 'client1' };
     jest.clearAllMocks();
   });
