@@ -14,18 +14,16 @@ import { GatewayExceptionFilter } from '../../common/filters/gateway-exception.f
 @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true })) //TODO: need to show some error message to the user if validation fails
 @WebSocketGateway()
 export class ChatGateway {
-  public constructor(private readonly _messagesService: MessagesService) {}
-
   @WebSocketServer()
   private _server: Server;
 
+  public constructor(private readonly _messagesService: MessagesService) {}
+
   public handleConnection(client: Socket): void {
-    console.log(`Client connected: ${client.id}`);
     this._server.emit('userConnected', { clientId: client.id });
   }
 
   public handleDisconnect(client: Socket): void {
-    console.log(`Client disconnected: ${client.id}`);
     this._server.emit('userDisconnected', { clientId: client.id });
   }
 
