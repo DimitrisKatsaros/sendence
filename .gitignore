@@ -45,5 +45,5 @@ error.log
 
 .env
 
-# Exclude project README from git
-README.md
+# Exclude project markdown files from git
+*.md
