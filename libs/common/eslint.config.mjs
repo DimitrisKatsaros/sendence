@@ -1,4 +1,4 @@
-import baseConfig from '../eslint.config.mjs';
+import baseConfig from '../../eslint.config.mjs'; // adjust path if needed
 
 export default [
   ...baseConfig,
@@ -13,7 +13,7 @@ export default [
       ],
     },
     languageOptions: {
-      parser: await import('jsonc-eslint-parser'),
+      parser: (await import('jsonc-eslint-parser')).default,
     },
   },
 ];
