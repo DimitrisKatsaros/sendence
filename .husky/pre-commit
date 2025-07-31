@@ -7,6 +7,18 @@ echo "=============================="
 echo "Running lint-staged and checking formatting..."
 echo "=============================="
 echo ""
+
+# Check if only one of package.json or package-lock.json is staged
+if git diff --cached --name-only | grep -q "package.json" && ! git diff --cached --name-only | grep -q "package-lock.json"; then
+  echo "❌ You staged package.json but not package-lock.json. Please stage both files together."
+  exit 1
+fi
+
+if git diff --cached --name-only | grep -q "package-lock.json" && ! git diff --cached --name-only | grep -q "package.json"; then
+  echo "❌ You staged package-lock.json but not package.json. Please stage both files together."
+  exit 1
+fi
+
 npm run lint || { echo "❌ Lint check failed. Please run 'npm run lint:fix' to auto-fix, or fix errors manually, then re-stage your changes."; exit 1; }
 npm run format:check || { echo "❌ Formatting check failed. Please run 'npm run format' to auto-fix formatting, then re-stage your changes."; exit 1; }
 
