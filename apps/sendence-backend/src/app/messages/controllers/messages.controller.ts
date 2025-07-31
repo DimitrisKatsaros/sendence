@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { MessagesService } from '../services/messages.service';
 import { MessageEntity } from '../entities/message.entity';
-import { Message } from '@sendence/api-interfaces';
+import { Message } from '@sendence/common';
 import { CreateMessageDto } from '../dto/create-message.dto';
 
 @Controller('messages')
