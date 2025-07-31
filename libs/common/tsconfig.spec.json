@@ -6,10 +6,5 @@
     "moduleResolution": "node10",
     "types": ["jest", "node"]
   },
-  "include": [
-    "jest.config.ts",
-    "src/**/__tests__/*.spec.ts",
-    "src/**/*.d.ts",
-    "src/app/app.controller.spec.ts"
-  ]
+  "include": ["jest.config.ts", "src/**/__tests__/*.spec.ts", "src/**/*.d.ts"]
 }
