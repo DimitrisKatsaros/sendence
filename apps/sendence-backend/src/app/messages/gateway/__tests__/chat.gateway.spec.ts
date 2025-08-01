@@ -72,16 +72,11 @@ describe('ChatGateway', () => {
     this.messagesService.create.mockResolvedValue(MOCK_CREATED_MESSAGE);
     await this.gateway.handleMessage(MOCK_MESSAGE_DTO);
     expect(this.messagesService.create).toHaveBeenCalledWith(MOCK_MESSAGE_DTO);
-    expect(mockServer.emit).toHaveBeenCalledWith(
-      'messageSend',
-      MOCK_CREATED_MESSAGE
-    );
+    expect(mockServer.emit).toHaveBeenCalledWith('messageSend', MOCK_CREATED_MESSAGE);
   });
 
   it('should handle service error on message', async function (this: Ctx) {
     this.messagesService.create.mockRejectedValue(new Error('Service error'));
-    await expect(this.gateway.handleMessage(MOCK_MESSAGE_DTO)).rejects.toThrow(
-      'Service error'
-    );
+    await expect(this.gateway.handleMessage(MOCK_MESSAGE_DTO)).rejects.toThrow('Service error');
   });
 });

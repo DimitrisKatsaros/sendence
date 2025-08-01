@@ -58,20 +58,14 @@ describe('MessagesController', () => {
   });
 
   it('should handle service errors on create', async function (this: Ctx) {
-    this.mockMessagesService.create.mockRejectedValue(
-      new Error('Service error')
-    );
-    await expect(this.controller.create(MOCK_MESSAGE_DTO)).rejects.toThrow(
-      'Service error'
-    );
+    this.mockMessagesService.create.mockRejectedValue(new Error('Service error'));
+    await expect(this.controller.create(MOCK_MESSAGE_DTO)).rejects.toThrow('Service error');
   });
 
   it('should create a message', async function (this: Ctx) {
     this.mockMessagesService.create.mockResolvedValue(MOCK_MESSAGE_ENTITY);
     const result = await this.controller.create(MOCK_MESSAGE_DTO);
-    expect(this.mockMessagesService.create).toHaveBeenCalledWith(
-      MOCK_MESSAGE_DTO
-    );
+    expect(this.mockMessagesService.create).toHaveBeenCalledWith(MOCK_MESSAGE_DTO);
     expect(result).toEqual(MOCK_MESSAGE_RESULT);
   });
 

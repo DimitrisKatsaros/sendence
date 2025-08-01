@@ -19,7 +19,7 @@ import { MessageEntity } from './messages/entities/message.entity';
         password: config.get('DB_USER_PASSWORD'),
         database: config.get('DB_NAME'),
         entities: [MessageEntity],
-        synchronize: true, //TODO: set to false in production
+        synchronize: true, //TODO: set to false in "production"
       }),
       inject: [ConfigService],
     }),

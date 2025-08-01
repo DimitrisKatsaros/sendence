@@ -1,18 +1,24 @@
+import { UseFilters, UsePipes, ValidationPipe } from '@nestjs/common';
 import {
+  MessageBody,
+  SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
-  SubscribeMessage,
-  MessageBody,
 } from '@nestjs/websockets';
-import { Server, Socket } from 'socket.io';
-import { MessagesService } from '../services/messages.service';
-import { UseFilters, UsePipes, ValidationPipe } from '@nestjs/common';
-import { CreateMessageDto } from '../dto/create-message.dto';
-import { GatewayExceptionFilter } from '../../common/filters/gateway-exception.filter';
 import { ACTION, RESULT } from '@sendence/common';
+import { Server, Socket } from 'socket.io';
+import { GatewayExceptionFilter } from '../../common/filters/gateway-exception.filter';
+import { CreateMessageDto } from '../dto/create-message.dto';
+import { MessagesService } from '../services/messages.service';
 
 @UseFilters(GatewayExceptionFilter)
 @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
+@WebSocketGateway({
+  cors: {
+    origin: 'http://localhost:4200',
+    credentials: true,
+  },
+})
 export class ChatGateway {
   @WebSocketServer()
   private _server: Server;
@@ -28,9 +34,7 @@ export class ChatGateway {
   }
 
   @SubscribeMessage(ACTION.SEND_MESSAGE)
-  public async handleMessage(
-    @MessageBody() message: CreateMessageDto
-  ): Promise<void> {
+  public async handleMessage(@MessageBody() message: CreateMessageDto): Promise<void> {
     const createdMessage = await this._messagesService.create(message);
     this._server.emit(RESULT.MESSAGE_SENT, createdMessage);
   }

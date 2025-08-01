@@ -9,12 +9,8 @@ export class MessagesController {
   public constructor(private readonly messagesService: MessagesService) {}
 
   @Post()
-  public async create(
-    @Body() createMessageDto: CreateMessageDto
-  ): Promise<Message> {
-    const message: MessageEntity = await this.messagesService.create(
-      createMessageDto
-    );
+  public async create(@Body() createMessageDto: CreateMessageDto): Promise<Message> {
+    const message: MessageEntity = await this.messagesService.create(createMessageDto);
     return {
       id: message.id,
       message: message.message,
