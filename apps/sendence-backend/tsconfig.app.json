@@ -1,10 +1,9 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/apps/sendence-backend",
+    "outDir": "../../dist/out-tsc",
     "module": "commonjs",
     "types": ["node"],
-    "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "target": "es2021"
   },

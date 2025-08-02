@@ -1,2 +1,3 @@
 export * from './lib/common';
-export { Message, CreateMessage } from './lib/messages/messages.interfaces';
+export { ACTION, GATEWAY_ERROR, RESULT } from './lib/constants/chat.constants';
+export type { CreateMessage, Message } from './lib/models/messages.models';
