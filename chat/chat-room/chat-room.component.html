@@ -2,11 +2,11 @@
   @if (error) {
   <div class="error">{{ error }}</div>
   }
+  <input [(ngModel)]="messageText" placeholder="Type your message..." />
+  <button (click)="sendMessage()">Send</button>
   <div class="messages">
     @for (message of messages; track $index) {
     <strong>{{ message.user }}:</strong> {{ message.message }}
     }
   </div>
-  <input [(ngModel)]="messageText" placeholder="Type your message..." />
-  <button (click)="sendMessage()">Send</button>
 </div>
