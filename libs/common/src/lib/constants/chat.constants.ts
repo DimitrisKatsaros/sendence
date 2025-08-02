@@ -9,4 +9,6 @@ export const ACTION = {
   SEND_MESSAGE: 'sendMessage',
 };
 
-export const GATEWAY_ERROR = 'gatewayError';
+export const ERROR = {
+  GATEWAY_ERROR: 'gatewayError',
+};

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npx nx run-many --target=serve --projects=common,sendence-backend,sendence-frontend --parallel",
+    "start": "npx nx run-many --target=serve --projects=sendence-backend,sendence-frontend --parallel",
     "start:be": "npx nx serve sendence-backend",
     "start:fe": "npx nx serve sendence-frontend",
     "start:debug": "concurrently \"npx nx run-many --target=build --projects=common && npx nx serve sendence-backend --inspect\" \"npx nx serve sendence-frontend\"",
@@ -40,6 +40,7 @@
     "@nestjs/typeorm": "^11.0.0",
     "@nestjs/websockets": "^11.1.5",
     "axios": "^1.6.0",
+    "bootstrap": "^5.3.7",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
     "nestjs-pino": "^4.4.0",

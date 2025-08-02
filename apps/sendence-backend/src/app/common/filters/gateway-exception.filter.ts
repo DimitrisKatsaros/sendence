@@ -1,5 +1,5 @@
 import { ArgumentsHost, Catch, WsExceptionFilter } from '@nestjs/common';
-import { GATEWAY_ERROR } from '@sendence/common';
+import { ERROR } from '@sendence/common';
 import { Socket } from 'socket.io';
 
 @Catch()
@@ -12,6 +12,6 @@ export class GatewayExceptionFilter implements WsExceptionFilter {
       errorMessage = (exception as { message?: string }).message || errorMessage;
     }
 
-    client.emit(GATEWAY_ERROR, { error: errorMessage });
+    client.emit(ERROR.GATEWAY_ERROR, { error: errorMessage });
   }
 }
