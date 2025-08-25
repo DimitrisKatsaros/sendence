@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Header } from './shared/components/header/header';
 
 @Component({
-  imports: [RouterModule],
-  selector: 'app-root',
+  imports: [RouterModule, Header],
+  selector: 'sendence-app',
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
