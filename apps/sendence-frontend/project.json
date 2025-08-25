@@ -2,7 +2,7 @@
   "name": "sendence-frontend",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "sendence",
   "sourceRoot": "apps/sendence-frontend/src",
   "tags": [],
   "targets": {

@@ -43,7 +43,9 @@ Thumbs.db
 
 error.log
 
+# Environment files
 .env
+environment.ts
 
 # Exclude project markdown files from git
 *.md

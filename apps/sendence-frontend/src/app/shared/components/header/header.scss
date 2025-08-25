@@ -1,0 +1,11 @@
+@use '../../../../styles' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  min-height: $space-48;
+
+  &--theme-toggle {
+    margin-left: auto;
+  }
+}

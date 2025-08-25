@@ -12,10 +12,10 @@ async function bootstrap() {
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   app.enableCors({
-    origin: 'http://localhost:4200', // Allow your frontend origin
+    origin: process.env.NG_CORS_ORIGIN || 'http://localhost:4200',
     credentials: true,
   });
-  const port = process.env.PORT || 3000;
+  const port = process.env.BE_PORT || 3000;
   await app.listen(port);
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }
