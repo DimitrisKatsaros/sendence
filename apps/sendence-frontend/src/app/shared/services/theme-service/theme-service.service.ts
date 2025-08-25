@@ -28,6 +28,6 @@ export class ThemeService {
   public apply(theme: Theme) {
     this._localStorageService.setItem(STORAGE_KEY.THEME, theme);
     this._document.documentElement.classList.toggle(THEME_TYPE.DARK, theme === THEME_TYPE.DARK);
-    this._currentTheme.set(this._getSavedTheme());
+    this._currentTheme.set(theme);
   }
 }
